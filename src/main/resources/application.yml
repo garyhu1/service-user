@@ -1,0 +1,25 @@
+server:
+   port: 8000
+spring:
+   application:
+      name: microservice-simple-provider-user
+   jap:
+      generate-ddl: false
+      show-sql: true
+      hibernate:
+         ddl-auto: none
+   datasource:
+         url: jdbc:mysql://127.0.0.1:3306/garyh?characterEncoding=UTF-8
+         username: root
+         password: garyhu
+         driverClassName: com.mysql.jdbc.Driver
+         max-active: 20
+         max-idle: 8
+         min-idle: 8
+         initial-size: 10
+logging:
+   level:
+      root: INFO
+      org.hibernate: INFO
+      org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+      org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
