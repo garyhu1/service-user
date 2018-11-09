@@ -23,3 +23,17 @@ logging:
       org.hibernate: INFO
       org.hibernate.type.descriptor.sql.BasicBinder: TRACE
       org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+#配置下/info接口的信息
+info:
+   app:
+      name: @project.artifactId@
+      encoding: @project.build.sourceEncoding@
+      java:
+         source: @java.version@
+         target: @java.version@
+eureka:
+   client:
+      serviceUrl:
+         defaultZone: http://localhost:8761/eureka/
+      instance:
+         prefer-ip-address: true #表示将自己的Ip注册到Eureka Server上
