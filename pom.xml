@@ -58,6 +58,12 @@
       <artifactId>spring-cloud-starter-eureka</artifactId>
     </dependency>
 
+    <!--security-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
