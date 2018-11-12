@@ -40,3 +40,7 @@ eureka:
    # 开启健康检查
    healthcheck:
       enabled: true
+# 设置负载均衡
+microservice-simple-provider-user:
+   ribbon:
+      NFLoadBalanceRuleClassName: com.netflix.loadbalancer.RandomRule
