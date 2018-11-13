@@ -17,6 +17,10 @@ spring:
          max-idle: 8
          min-idle: 8
          initial-size: 10
+security:
+   user: # 配置默认的用户
+      name: user1
+      password: password1
 logging:
    level:
       root: INFO

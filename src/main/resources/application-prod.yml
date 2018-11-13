@@ -17,6 +17,12 @@ spring:
          max-idle: 8
          min-idle: 8
          initial-size: 10
+security:
+   basic:
+      enabled: false # 关闭Http basic 认证
+   user:
+      name: user1
+      password: password1
 logging:
    level:
       root: INFO
