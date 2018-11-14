@@ -8,5 +8,13 @@ package com.garyhu.pojo;
 public class BrowserProperties {
 
     // 默认路径
-    private String loginPage = "/login.html";
+    private String loginPage = "";
+
+    public String getLoginPage() {
+        return loginPage;
+    }
+
+    public void setLoginPage(String loginPage) {
+        this.loginPage = loginPage;
+    }
 }

@@ -1,5 +1,6 @@
 package com.garyhu.controller;
 
+import com.garyhu.config.SecurityProperties;
 import com.garyhu.pojo.BaseResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +24,7 @@ import java.io.IOException;
 /**
  * @author: garyhu
  * @since: 2018/11/13 0013
- * @decription:
+ * @decription: 前后端分离，根据链接的不同做出不同处理方式
  */
 @RestController
 public class BrowserSecurityController {
@@ -36,6 +37,10 @@ public class BrowserSecurityController {
     //用于重新定向
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
+    // 自定义的配置
+    @Autowired
+    private SecurityProperties securityProperties;
+
     @RequestMapping("/authentication/require")
     // 返回401状态码
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
@@ -46,7 +51,7 @@ public class BrowserSecurityController {
             String redirectUrl = savedRequest.getRedirectUrl();
             LOGGER.info("引发跳转的请求是：{}",redirectUrl);
             if(StringUtils.endsWithIgnoreCase(redirectUrl,".html")){
-                redirectStrategy.sendRedirect(request,response,"/login.html");
+                redirectStrategy.sendRedirect(request,response,securityProperties.getBrowser().getLoginPage());
             }
         }
 

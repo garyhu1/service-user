@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author: garyhu
  * @since: 2018/11/13 0013
- * @decription:
+ * @decription: 用户服务类，添加用户
  */
 @Component
 public class MyUserDetailsService implements UserDetailsService {
