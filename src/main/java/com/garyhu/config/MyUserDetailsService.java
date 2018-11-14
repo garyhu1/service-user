@@ -28,10 +28,20 @@ public class MyUserDetailsService implements UserDetailsService {
 
         LOGGER.info("用户名：{}",username);
 
-        String password = passwordEncoder.encode("123456");
-        LOGGER.info("用户密码：{}",password);
-        // 参数描述：用户名、密码、权限
-        User user = new User(username,password, AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
-        return user;
+        if("user".equals(username)){
+            String password = passwordEncoder.encode("pass123");
+            LOGGER.info("用户密码：{}",password);
+            // 参数描述：用户名、密码、权限
+            User user = new User(username,password, AuthorityUtils.commaSeparatedStringToAuthorityList("user-role"));
+            return user;
+        }else if("admin".equals(username)){
+            String password = passwordEncoder.encode("pass456");
+            LOGGER.info("用户密码：{}",password);
+            // 参数描述：用户名、密码、权限
+            User user = new User(username,password, AuthorityUtils.commaSeparatedStringToAuthorityList("admin-role"));
+            return user;
+        }else {
+            return null;
+        }
     }
 }
