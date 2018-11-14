@@ -1,5 +1,6 @@
 package com.garyhu.controller;
 
+import com.garyhu.config.MyUserDetailsService;
 import com.garyhu.config.SecurityProperties;
 import com.garyhu.pojo.BaseResponse;
 import org.slf4j.Logger;
