@@ -48,3 +48,7 @@ eureka:
 microservice-simple-provider-user:
    ribbon:
       NFLoadBalanceRuleClassName: com.netflix.loadbalancer.RandomRule
+imooc:
+   security:
+      browser:
+         loginPage: /login.html

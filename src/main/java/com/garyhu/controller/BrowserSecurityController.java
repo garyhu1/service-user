@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
@@ -53,6 +54,9 @@ public class BrowserSecurityController {
             LOGGER.info("引发跳转的请求是：{}",redirectUrl);
             if(StringUtils.endsWithIgnoreCase(redirectUrl,".html")){
                 redirectStrategy.sendRedirect(request,response,securityProperties.getBrowser().getLoginPage());
+            }else {
+                String url = "/login?username=user&password=pass123";
+                redirectStrategy.sendRedirect(request,response,url);
             }
         }
 

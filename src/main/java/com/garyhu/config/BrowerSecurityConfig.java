@@ -38,7 +38,7 @@ public class BrowerSecurityConfig extends WebSecurityConfigurerAdapter{
                 .failureHandler(myAuthenctiationFailureHandler)
                 .and()
                 .authorizeRequests()     // 定义哪些URL需要被保护，哪些不需要被保护
-                .antMatchers("/authentication/require",securityProperties.getBrowser().getLoginPage()).permitAll()// 设置所有人都可以访问登录页面
+                .antMatchers("/authentication/require","user/1","/login",securityProperties.getBrowser().getLoginPage()).permitAll()// 设置所有人都可以访问登录页面
                 .anyRequest()            // 任何请求登录后都可以访问
                 .authenticated()
                 .and()
