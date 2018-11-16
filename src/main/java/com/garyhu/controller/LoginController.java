@@ -32,6 +32,7 @@ public class LoginController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 
+
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -46,24 +47,24 @@ public class LoginController {
     public BaseResponse signIn(@RequestParam(value = "username",required = true) String username,
                                @RequestParam(value = "password",required = true) String password,
                                HttpServletRequest request, HttpServletResponse response) throws IOException {
-        username = username.trim();
-        UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(username,password);
-        try{
-            Authentication authentication = authenticationManager.authenticate(authRequest);
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-            HttpSession session = request.getSession();
-            session.setAttribute("SPRING_SECURITY_CONTEXT",SecurityContextHolder.getContext());
+       username = username.trim();
+       UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username,password);
+       try{
+           Authentication authenticate = authenticationManager.authenticate(authenticationToken);
+           SecurityContextHolder.getContext().setAuthentication(authenticate);
+           HttpSession session = request.getSession();
+           session.setAttribute("SPRING_SECURITY_CONTEXT",SecurityContextHolder.getContext());
 
-            RequestCache requestCache = new HttpSessionRequestCache();
-            SavedRequest savedRequest = requestCache.getRequest(request, response);
-            if(savedRequest != null){
-                String redirectUrl = savedRequest.getRedirectUrl();
-                LOGGER.info("重新定向的url是：{}",redirectUrl);
-                response.sendRedirect(redirectUrl);
-            }
-            return new BaseResponse("登录成功");
-        }catch (AuthenticationException e){
-            return new BaseResponse("登录失败");
-        }
+           RequestCache requestCache = new HttpSessionRequestCache();
+           SavedRequest savedRequest = requestCache.getRequest(request, response);
+           if(savedRequest  != null){
+               String redirectUrl = savedRequest.getRedirectUrl();
+               LOGGER.info("重新定向的url是：{}",redirectUrl);
+               response.sendRedirect(redirectUrl);
+           }
+           return new BaseResponse("登录成功");
+       }catch (AuthenticationException e){
+           return new BaseResponse("登录失败");
+       }
     }
 }

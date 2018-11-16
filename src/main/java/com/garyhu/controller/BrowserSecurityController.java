@@ -44,11 +44,11 @@ public class BrowserSecurityController {
     private SecurityProperties securityProperties;
 
     @RequestMapping("/authentication/require")
-    // 返回401状态码
+    // 返回401状态
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    public BaseResponse requireAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
-//        LOGGER.info("引发跳转的请求是：{}",1);
+    public BaseResponse authentication(HttpServletRequest request,HttpServletResponse response) throws IOException {
         SavedRequest savedRequest = requestCache.getRequest(request, response);
+
         if(savedRequest != null){
             String redirectUrl = savedRequest.getRedirectUrl();
             LOGGER.info("引发跳转的请求是：{}",redirectUrl);
